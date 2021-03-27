@@ -1,0 +1,79 @@
+Delete the most recent commit, keeping the work you've done:
+
+git reset --soft HEAD~1
+Delete the most recent commit, destroying the work you've done:
+
+git reset --hard HEAD~1
+
+
+# Initial setup
+# Install Github for Windows
+# Go to this link and select appropriate setup
+# Download will start, start installer & install with desired Features
+
+# While installing, if you haven't done so already, make a folder where you want your Repos to be
+# For myself, I like putting on my Desktop
+
+# After install, we need to set Home path
+# There are several methods for doing so: modifying profile file in etc folder, changing the shortcut, and creating environemntal variables 
+# We modify the shortcut so that it default opens in the repo folder we mentioned before. 
+# Go to Desktop shortcut --> right click on the shortcut --> select properties --> change start in path name to the path of the repo folder you made earlier 
+# NOTE: If there is a -cd home in the Target of the shortcut, delete just those lines (leave the path name in the parentheses alone)
+
+# Time to do some more setup
+# Start the shortcut and notice its starting path name 
+# Need to put in config info 
+# Inspect the current config by typing the following
+
+git config --list
+
+# set GitHub username and e-mail
+
+git config --global user.name "John Doe"
+git config --global user.email johngitdoe@example.com
+# setup git add and git commit on the same line
+git config --global alias.add-commit '!git add -A && git commit'
+
+
+# Clone your first repo
+# find the https link for the repo --> go to repo --> go to base of repo --> click clone and copy the link 
+git clone 'full git hub link' # example: git clone https://github.com/blueshiftedK/cdo_data_challenge.git
+
+# if this fails b/c the repo is private, try something like this
+# can sign-in and/or use a personal access token
+
+# Personal Access Token setup
+# Personal access tokens function like ordinary OAuth access tokens. They can be used instead of a password for Git over HTTPS, or can be used to authenticate to the API over Basic Authentication.
+# Got to github page --> Settings --> Developer settings --> Personal access Tokens --> generate new token 
+# store personal access token somwhere, perhaps in a text file 
+
+# Attempt clone again with following mods if previous attempt failed (most likely due to cloning a private repo)
+git clone <https://username@github.com/repo_name> # eg, git clone https://blueshiftedK@github.com/blueshiftedK/cdo_data_challenge.git
+# if Peronsal Access Token fails, try using regular username and password setup --> sign in & authorize credential manager
+
+# Now you're ready to to work, here is a standard workflow
+cd <repo> 
+# look at current status
+git status 
+# check out a branch, creating new "forked" branch from main 
+git checkout -b <branch>
+
+# setup git alias for adding and committing on the same command
+
+
+# Create local repo but first must do so in GitHub so go to website 
+mkdir <myrepo>
+cd <myrepo>
+echo "# My Test Repository" > Readme.md
+# initialize repo, creates git file 
+git init
+# add local repo to GitHub
+git remote add origin https://github.com/username/repo_name.git # e.g.: git remote add origin https://github.com/blueshiftedK/environ_setup.git
+# need to add files from local to remote
+
+
+
+# Local Uninstall 
+# Control Panel --> Programs and Features --> Select Git --> Uninstall 
+# Delete other pieces of info: delete .gitconfig file from C:\Users\username & detele Git folder from C:\Program Files
+
